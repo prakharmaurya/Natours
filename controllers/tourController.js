@@ -243,7 +243,7 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
       $geoWithin: { $centerSphere: [[lng, lat], radius] },
     },
   });
-  console.log(tours);
+  //console.log(tours);
 
   res.status(200).json({
     status: 'success',

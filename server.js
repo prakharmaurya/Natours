@@ -20,18 +20,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log('DB Connection is successful');
+    //console.log('DB Connection is successful');
   });
 
 const port = process.env.PORT || 80;
 const server = app.listen(port, () => {
-  console.log(`Server running on ${port}`);
-});
-
-process.on('unhandledRejection', (err) => {
-  console.log(err.name, err.message);
-  console.log('Unhandeled Rejection Shutting down....');
-  server.close(() => {
-    process.exit(1);
-  });
+  //console.log(`Server running on ${port}`);
 });

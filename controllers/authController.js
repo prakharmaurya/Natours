@@ -108,7 +108,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   //Grant access
   req.user = currentUser;
   res.locals.user = currentUser;
-  console.log('Login successful from protect');
+  //console.log('Login successful from protect');
   next();
 });
 
@@ -134,7 +134,7 @@ exports.isLoggedIn = async (req, res, next) => {
       }
       //There is logged in user
       res.locals.user = currentUser;
-      console.log('Login successful from protect');
+      //console.log('Login successful from protect');
       return next();
     } catch (err) {
       return next();
@@ -147,7 +147,7 @@ exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     //roles ['admin', 'lead-guide']
     if (!roles.includes(req.user.role)) {
-      console.log(req.user.roles);
+      //console.log(req.user.roles);
       return next(
         new AppError("You don't have permission to perform this action.", 403)
       );
@@ -170,7 +170,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   //3. send it to the user
   try {
-    console.log(`trying to send email to ${user.email}`);
+    //console.log(`trying to send email to ${user.email}`);
     const resetURL = `${req.protocol}://${req.get(
       'host'
     )}/api/v1/users/resetPassword/${resetToken}`;
@@ -230,7 +230,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.password = req.body.newPassword;
   user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
-  console.log('user new password saved successfully');
+  //console.log('user new password saved successfully');
 
   //4) Log user in
   createSendToken(user, 200, res);

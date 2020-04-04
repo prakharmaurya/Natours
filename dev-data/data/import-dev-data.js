@@ -15,7 +15,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log('Import data DB Connection is successful');
+    //console.log('Import data DB Connection is successful');
   });
 
 //read json file
@@ -30,9 +30,9 @@ const importer = async () => {
     await Tour.create(tours);
     await Review.create(reviews);
     await User.create(users, { validateBeforeSave: false });
-    console.log('data successfully loaded');
+    //console.log('data successfully loaded');
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -42,9 +42,9 @@ const deleter = async () => {
     await Tour.deleteMany();
     await Review.deleteMany();
     await User.deleteMany();
-    console.log('data successfully deleted!');
+    //console.log('data successfully deleted!');
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
 };
 
@@ -54,4 +54,4 @@ if (process.argv[2] == '--import') {
   deleter();
 }
 
-console.log(process.argv);
+//console.log(process.argv);
